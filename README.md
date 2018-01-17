@@ -37,7 +37,7 @@ The tumor specific reference geneome, containing the wild type and mutant sequen
 ### SAMPLE_Index.txt 
 A file containing the name of the wild type and mutant alleles along with the positions of the reference nucelotide and mutant nucelodie.  The index file is required by softwares such as Bam Read Count and Sam Tools to identify how many reads aligned to that particular nucleotide.
 
-## MAXX Special Features
+## Special Features
 1. Handles genes that have more than one mutation.
 2. Extends gene sequences by additional 200 nucelotides on each end.
 3. Identifies refernce nuceltoide mismatches between gtf reference geneome and 
