@@ -1,21 +1,29 @@
+import argparse
 import sys
 import re
 import copy
 import itertools
 import operator
 
+parser = argparse.ArgumentParser()
+parser.add_argument("-m", dest="mutation_file", required=True, help="path to mutation file, must be formatted as the example.")
+parser.add_argument("-f", dest="fasta_file", required=True, help="path to reference genome, in fasta format")
+parser.add_argument("-g", dest="gtf_file", required=True, help="path to GTF file that corresponds to refence genome")
+parser.add_argument("-s", dest="sample_name", required=True, help="name of sample being used")
+args = parser.parse_args()
+
 #mutation list to generate a tumor specific genome
-mutation_file = open(sys.argv[1],'r')
+mutation_file = open(args.mutation_file,'r')
 header_line = mutation_file.readline()
 
 #gtf file genome
-gtf_file = open(sys.argv[2],'r')
+gtf_file = open(args.gtf_file,'r')
 
 #reference genome
-fasta_file = open(sys.argv[3],'r')
+fasta_file = open(args.fasta_file,'r')
 
 #the name of sample
-sample_name = sys.argv[4]
+sample_name = args.sample_name
 
 
 #I'm going to go ahead and organize all of the mutations first.
@@ -41,6 +49,7 @@ mutated_gene_position_dict = {}
 for line in gtf_file:
 	line = line.replace("\"","")
 	line_list = line.strip().split("\t")
+	print line_list
 	if "#" not in line and line_list[2] == "gene":
 		attribute_list = line_list[8].split(";")
 		gene = attribute_list[4].replace(" gene_name ","")
@@ -81,8 +90,6 @@ for line in fasta_file:
 	if "#" not in line:
 		if ">" in line:
 			if chr == "":
-				#You might have to modify this line based on the headers of the fasta file... 
-				#Here I'm making the assumption the header is >chr1 or >chr what ever number
 				chr = line.replace(">","")
 			else:
 				chr_dict[chr] = sequence
@@ -158,9 +165,7 @@ for mutated_gene in mutation_dict:
 		for x in range(6, len(mutation)):
 			tumor_index_file.write("\t" + mutation[x])
 		tumor_index_file.write("\n")
-		print mutation
 		mutation = altered_mutation_dict[mutated_gene][mutation_count]
-		print mutation
 		mut_start = mutation[2]
                 mut_end = mutation[3]
 		if len(mutation[5]) > 1:

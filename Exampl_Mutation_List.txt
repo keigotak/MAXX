@@ -1,0 +1,9 @@
+Gene	Chr	Start	End	Ref_allele	Alt_allele
+Gene1	1	222	222	C	T
+Gene2	1	212	213	CA	C
+Gene3	1	215	215	T	TG
+Gene4   1       205     209     TGGAA   T
+Gene4   1       201     201     A       AT
+Gene4   1       212     213     CA      C
+Gene4   1       215     215     T       TG
+Gene4	1       222     222     C       T
