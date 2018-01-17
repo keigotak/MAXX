@@ -31,7 +31,6 @@ chr1    HAVANA  gene    201     225     .       +       .       gene_id "ENSG000
 This is simply the name of the sample that contains the mutations within the mutation list.  The -s paramter is used to label the output files e.g. SAMPLE.fa and SAMPLE_Index.txt
 
 ## Output Files
-MAXX outputs 2 files, labeled as SAMPLE.fa and SAMPLE_Index.txt.  
 ### SAMPLE.fa 
 The tumor specific reference geneome, containing the wild type and mutant sequence for all mutated genes presented in the mutation list.  The reference geneome is used with to align the RNA-sequencing data. 
 ### SAMPLE_Index.txt 
