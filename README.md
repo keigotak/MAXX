@@ -40,7 +40,8 @@ A file containing the name of the wild type and mutant alleles along with the po
 ## Special Features
 1. Handles genes that have more than one mutation.
 2. Extends gene sequences by additional 200 nucelotides on each end.
-3. Identifies refernce nuceltoide mismatches between gtf reference geneome and 
+3. Identifies refernce nuceltoide mismatches between gtf reference geneome and
+4. Condensed example input and output files.
 
 
 
