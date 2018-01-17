@@ -16,6 +16,12 @@ Gene3   1       215     215     T       TG
 Gene4   1       205     209     TGGAA   T
 Gene4   1       201     201     A       AT
 ```
+### -f 
+The path to the reference genome where the nuceleotides will be altered to match the tumor's mutated sequence.  Note, MAXX will identify if the reference nucelotied presented in the mutation list does not match the reference nucelotide in the reference geneome.  As for the format of the header line for each chromsome, it has to contain only >chr + chromsome.  For example:
+```
+>chr1
+```
+
 
 
 
