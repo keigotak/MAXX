@@ -7,7 +7,7 @@ Python: any version
 MAXX is a python script, thus it is ran using the command line.  To run MAXX, first download the MAXX.py script.  Next open the terminal (MAC) or the command prompt (PC) and change your working directory to where the MAXX.py script is located. Once in the proper directory, enter "python MAXX.py -m Mutation_File_Path -f Reference_Genome_Path -g GTF_File_Path -s Sample_Name" into the terminal/command prompt and hit enter.  MAXX will take approximatly 2-3 minutes to run and output a tumor specific reference genome and an accompaning mutation index file.
 ## Required Input Paramters
 ### -m
-The path to the mutation list file. This file cotains a list of mutations that will be used to generate the tumor specific reference genome.  For MAXX to run without any errors, the mutation file must be tab delimted and follow the format demonstrated below.  It is also crucial that the Ref_allele and Alt_allele columns follow the vcf format.  Where insertions and deletions contain the previous reference nucleotide.  
+The path to the mutation list file. This file cotains a list of mutations that will be used to generate the tumor specific reference genome.  For MAXX to run without an error, the mutation file must be tab delimted and follow the format demonstrated below.  It is also crucial that the Ref_allele and Alt_allele columns follow the vcf format.  Where insertions and deletions contain the previous reference nucleotide.  
 ```
 Gene    Chr     Start   End     Ref_allele      Alt_allele
 Gene1   1       222     222     C       T
@@ -16,9 +16,9 @@ Gene3   1       215     215     T       TG
 Gene4   1       205     209     TGGAA   T
 Gene4   1       201     201     A       AT
 ```
-In addition to the six columns, there may be additional columns futher describing the mutation.  MAXX will ignore any additional columns, however they will be outputed to the mutation index file. 
+In addition to the six columns, there may be additional columns futher describing the mutation.  MAXX will ignore any additional columns, however they will be carried over to the mutation index file. 
 ### -f 
-The path to the reference genome file, most commonly will be Hg19 or GRCh38 reference genomes.  MAXX uses this file to obtain the genetic sequence of mutated genes and then alters that sequence based on mutations presented in the mutation list file. For MAXX to run properly, the header line for each chromsome within the reference file must be labled as >chr + chromsome.  For example:
+The path to the reference genome file, most likely will be Hg19 or GRCh38.  MAXX uses the input reference genome to obtain the genetic sequence of genes presented in the mutation list.  The obtained gene sequence is then altered to match the gene sequence exhibited by the tumor. For MAXX to run properly, the header line for each chromsome within the reference file must be labled as >chr + chromsome.  For example:
 ```
 >chr1
 ```
@@ -29,19 +29,16 @@ chr1    HAVANA  gene    201     225     .       +       .       gene_id "ENSG000
 ``` 
 ### -s
 This is simply the name of the sample that contains the mutations within the mutation list.  The -s paramter is used to label the output files, e.g. SAMPLE.fa and SAMPLE_Index.txt
-
 ## Output Files
 ### SAMPLE.fa 
-A tumor specific reference geneome in the Fasta format.  This reference genome contains the wild type and mutant sequence for all mutated genes present in the mutation list.  This reference geneome is ideally used in conjuction with a RNA-sequencing aligner to increase alignment of tumor specefic RNA-sequencing reads.  
+A tumor specific reference geneome in the fasta format.  The new reference genome contains the wild type and mutant sequence for all mutated genes present in the mutation list.  This reference geneome is ideally used in conjuction with a RNA-sequencing aligner to increase alignment of mutant RNA-sequencing reads.  
 ### SAMPLE_Index.txt 
-A file containing the new location of all the presented mutations within the tumor specific reference genome.  This index file is required by softwares such as Bam Read Count and Sam Tools to identify how many reads aligned to that particular nucleotide.
-
+A file containing the new location of all input mutations within the tumor specific reference genome.  This index file is required by softwares such as Bam Read Count and Sam Tools to identify how many reads aligned to that particular nucleotide.
 ## Special Features of MAXX
 1. Can make mutant gene sequences from genes that contain more than one mutation by using a nucleotide shifting algorithim.
-2. Extends gene sequences placed within the tumor specific reference genome by 200 nucleotides to ensure proper RNA-sequencing aligment.
+2. Extends gene sequences placed within the tumor specific reference genome by 200 nucleotides on each end to provide proper RNA-sequencing aligment.
 3. Produces a warning when the reference allele nucleotide within the mutation list doesn't correspond within the nucleotide within the reference genome. This ensures that the correct reference genomes and GTF files are being used. 
-4. MAXX generated reference genomes are approximatly 70 times smaller than a typical Hg19 reference genome.  They also require much less comptaional power to run RNA-sequencing aligner and maintain accuracy of RNA-sequencing alignment for the selected genes. 
+4. MAXX generated reference genomes are approximatly 70 times smaller than a typical Hg19 reference genome.  They also require much less comptaional power to run a RNA-sequencing aligner and maintain accuracy of RNA-sequencing alignment for the selected genes. 
 5. Example input and output files are provided for testing and tweaking the MAXX.py script.  
-
 ## FAQs
 
