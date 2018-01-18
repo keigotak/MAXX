@@ -4,10 +4,10 @@ The MAXX script generates a tumor specific reference genome and an accompaning m
 ### Requirements
 Python: any version
 ### Running MAXX
-MAXX is a python script, thus it is ran using the command line.  To run MAXX, first download the MAXX.py script.  Next open the terminal (MAC) or the command prompt (PC) and change your working directory to where the MAXX.py script is located. Finally, enter "python MAXX.py -m Mutation_File_Path -f Reference_Genome_Path -g GTF_File_Path -s Sample_Name" into the terminal/command prompt and hit enter.  MAXX will take approximatly 2-3 minutes to run and output a tumor reference genome and an accompaning mutation index file.
+MAXX is a python script, thus it is ran using the command line.  To run MAXX, first download the MAXX.py script.  Next open the terminal (MAC) or the command prompt (PC) and change your working directory to where the MAXX.py script is located. Once in the proper directory, enter "python MAXX.py -m Mutation_File_Path -f Reference_Genome_Path -g GTF_File_Path -s Sample_Name" into the terminal/command prompt and hit enter.  MAXX will take approximatly 2-3 minutes to run and output a tumor reference genome and an accompaning mutation index file.
 ## Required Input Paramters
 ### -m
-The path to the mutation list that are going to be used to generate the tumor specific reference genome.  This file must be tab delimted and follow the format demonstrated below.
+The path to the mutation list file. This file cotains a list of mutations that will be used to generate the tumor specific reference genome.  For MAXX to run without any errors, the mutation file must be tab delimted and follow the format demonstrated below.  It is also crucial that the Ref_allele and Alt_allele columns follow the vcf format.  Where insertions and deletions contain the reference nucleotide.  
 ```
 Gene    Chr     Start   End     Ref_allele      Alt_allele
 Gene1   1       222     222     C       T
@@ -16,17 +16,17 @@ Gene3   1       215     215     T       TG
 Gene4   1       205     209     TGGAA   T
 Gene4   1       201     201     A       AT
 ```
-However, there may be additional columns futher describing the mutation.
+In addition to the six columns, there may be additional columns futher describing the mutation.  MAXX will ignore any additional columns, however they will be outputed to the mutation index file. 
 ### -f 
-The path to the reference genome where the nuceleotides will be altered to match the tumor's mutated sequence.  Note, MAXX will identify if the reference nucelotied presented in the mutation list does not match the reference nucelotide in the reference geneome.  As for the format of the header line for each chromsome, it has to contain only >chr + chromsome.  For example:
+The path to the reference genome file, most commonly will be Hg19 or GRCh38 reference genomes.  MAXX uses this file to obtain the genetic sequence of mutated genes and then alters that sequence based on mutations presented in the mutation list file. For MAXX to run properly, the header line for each chromsome within the reference file must be labled as >chr + chromsome.  For example:
 ```
 >chr1
 ```
 ### -g
-The path to the GTF file that corresponds with the reference geneome. MAXX uses the GTF file to identify the start and end positions for each mutated gene.  In order for MAXX to run properly, the GTF attribute identifies must be formatted such as this.  
+The path to the GTF file that corresponds to the reference geneome. MAXX uses the GTF file to identify the start and end positions for each mutated gene, these positions are then used to obtain the gene sequence from the input reference genome.  In order for MAXX to run properly, the GTF attribute "gene_name" must be positoned 5th in the attribue list.  
 ```
 chr1    HAVANA  gene    201     225     .       +       .       gene_id "ENSG00000223972.4"; transcript_id "ENSG00000223972.4"; gene_type "pseudogene"; gene_status "KNOWN"; gene_name "Gene1"; transcript_type "pseudogene"; transcript_status "KNOWN"; transcript_name "Gene1"; level 2; havana_gene "OTTHUMG00000000961.2";
-```
+``` 
 ### -s
 This is simply the name of the sample that contains the mutations within the mutation list.  The -s paramter is used to label the output files e.g. SAMPLE.fa and SAMPLE_Index.txt
 
@@ -45,5 +45,5 @@ A file containing the name of the wild type and mutant alleles along with the po
 
 ## FAQs
 
-
+d
 
