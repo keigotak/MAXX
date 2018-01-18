@@ -40,8 +40,8 @@ A file containing the new location of all the presented mutations within the tum
 1. Can make mutant gene sequences from genes that contain more than one mutation by using a nucleotide shifting algorithim.
 2. Extends gene sequences placed within the tumor specific reference genome by 200 nucleotides to ensure proper RNA-sequencing aligment.
 3. Produces a warning when the reference allele nucleotide within the mutation list doesn't correspond within the nucleotide within the reference genome. This ensures that the correct reference genomes and GTF files are being used. 
-4. relatively small size while mainting effectivness.
-5. example input and out put files. 
+4. MAXX generated reference genomes are approximatly 70 times smaller than a typical Hg19 reference genome.  They also require much less comptaional power to run RNA-sequencing aligner and maintain accuracy of RNA-sequencing alignment for the selected genes. 
+5. Example input and output files are provided for testing and tweaking the MAXX.py script.  
 
 ## FAQs
 
