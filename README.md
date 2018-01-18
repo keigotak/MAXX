@@ -1,10 +1,10 @@
 # MAXX
-The MAXX script generates a tumor specific reference genome from a list of muations, reference geneome, and a gtf file.  Tumor specific reference genomes have demonstatrated to dramatically enhance RNA-sequencing reads to indel mutations.  With the increasing ability to detect indel mutations, tumor specific reference geneomes generated via MAXX provide the most comprehensive method of tumor allelic expression.
-## Setup
+The MAXX script generates a tumor specific reference genome and an accompaning mutation index file from a list of muations, reference geneome, and gtf file.  Tumor specific reference genomes have been demonstatrated to dramatically enhance alignment of RNA-sequencing reads containing indel mutations, providing a comprehensive analysis of tumor allelic expression.  Since sequencing methods and mutation detection softwares are dramatically improving, the ability to detect indel mutations within RNA-sequencing data will continue to be an important aspect in performing mutation allelic expression analyses.
+## Setup and Processing
 ### Requirements
 Python: any version
-### Getting Started
-MAXX is a python script, thus it is ran using the command line.  To run MAXX, first download the MAXX.py script.  Next open the terminal (MAC) or the command prompt (PC) and change your working directory to where the MAXX.py script is located. Finally, enter "python MAXX.py -m Mutation_File -f Reference_Genome -g GTF_File -s Sample_Name" into the terminal/command prompt and hit enter.
+### Running MAXX
+MAXX is a python script, thus it is ran using the command line.  To run MAXX, first download the MAXX.py script.  Next open the terminal (MAC) or the command prompt (PC) and change your working directory to where the MAXX.py script is located. Finally, enter "python MAXX.py -m Mutation_File_Path -f Reference_Genome_Path -g GTF_File_Path -s Sample_Name" into the terminal/command prompt and hit enter.  MAXX will take approximatly 2-3 minutes to run and output a tumor reference genome and an accompaning mutation index file.
 ## Required Input Paramters
 ### -m
 The path to the mutation list that are going to be used to generate the tumor specific reference genome.  This file must be tab delimted and follow the format demonstrated below.
@@ -41,6 +41,9 @@ A file containing the name of the wild type and mutant alleles along with the po
 2. Extends gene sequences by additional 200 nucelotides on each end.
 3. Identifies refernce nuceltoide mismatches between gtf reference geneome and
 4. Condensed example input and output files.
+5. relatively small size while mainting effectivness.
+
+##FAQs
 
 
 
