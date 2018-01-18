@@ -43,7 +43,7 @@ A file containing the name of the wild type and mutant alleles along with the po
 4. Condensed example input and output files.
 5. relatively small size while mainting effectivness.
 
-##FAQs
+## FAQs
 
 
 
