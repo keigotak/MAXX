@@ -41,3 +41,4 @@ A file containing the new positions of all input mutations, relative to the tumo
 4. MAXX generated reference genomes are approximately 70 times smaller than a typical Hg19 reference genome.  They also require much less computational power to run a RNA-sequencing aligner.  Despite this decrease in computational storage and power, tumor specific reference genomes maintain a high RNA-sequencing alignment for mutated genes. 
 5. Example input and output files are provided for testing and altering the MAXX.py script for indvidual needs.  
 ## FAQs
+For additional questions about MAXX or the allelic expression analysis, please contact Adam Grant at adglink@email.arizona.edu.
