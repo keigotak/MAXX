@@ -2,7 +2,7 @@
 The MAXX.py script generates a tumor specific reference genome and an accompanying mutation index file from a list of mutations, reference genome, and gtf file.  Tumor specific reference genomes have been demonstrated to dramatically enhance alignment of RNA-sequencing reads containing indel mutations, providing an unbiased analysis of mutation allelic expression.  Since sequencing methods and mutation detection software are dramatically improving, the ability to detect indel mutations within RNA-sequencing data will continue to be an important aspect in performing mutation allelic expression analyses.
 ## Setup and Processing
 ### Requirements
-Python: any version
+Python: 2.7
 ### Running MAXX
 MAXX is a python script; thus, it is ran using the command line.  To run MAXX, first download the MAXX.py script.  Next open the terminal (MAC) or the command prompt (PC) and change your working directory to where the MAXX.py script is located. Once in the proper directory, enter "python MAXX.py -m Mutation_File_Path -f Reference_Genome_Path -g GTF_File_Path -s Sample_Name" into the terminal/command prompt and hit enter.  MAXX will take approximately 2-3 minutes to run and output a tumor specific reference genome along with an accompanying mutation index file.
 ## Required Input Parameters
