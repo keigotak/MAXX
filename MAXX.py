@@ -126,6 +126,8 @@ for mutated_gene in mutation_dict:
 		mut_start_pos = mutation[2] - start_pos - 0
                 mut_end_pos = mutation[3] - start_pos - 0
                 mutant_sequence = gene_sequence[:(mut_start_pos-1)] + mutation[5] + gene_sequence[mut_end_pos:]
+		altered_mutation_dict[mutated_gene][0][2] = mut_start_pos
+		altered_mutation_dict[mutated_gene][0][3] = mut_end_pos
                 tumor_ref_genome.write(mutant_sequence + "\n")
 	else:
 		shift = 0
@@ -154,7 +156,7 @@ tumor_index_file = open(sample_name + "_Index.txt",'w')
 for mutated_gene in mutation_dict:
 	mutation_count = 0
 	wt_header = ">" + mutated_gene
-	mut_header = ">" + mutated_gene + "_Mut"
+	mut_header = mutated_gene + "_Mut"
 	start_pos = mutated_gene_position_dict[mutated_gene][0]
 	for mutation in mutation_dict[mutated_gene]:
 		wt_start = mutation[2] - start_pos + 201
